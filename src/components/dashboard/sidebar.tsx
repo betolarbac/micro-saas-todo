@@ -16,7 +16,7 @@ export function Sidebar({children, className}: SidebarGenericProps) {
 
 export function SidebarHeader({children, className}: SidebarGenericProps) {
   return (
-    <header className={cn(['pt-6 px-6', className])}>
+    <header className={cn(['px-6 py-3 border-b border-border', className])}>
       {children}
     </header>
   )
