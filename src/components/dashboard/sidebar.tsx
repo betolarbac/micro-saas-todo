@@ -22,6 +22,14 @@ export function SidebarHeader({children, className}: SidebarGenericProps) {
   )
 }
 
+export function SidebarHeaderTitle({children, className}: SidebarGenericProps) {
+  return (
+    <h2 className={cn(['', className])}>
+      {children}
+    </h2>
+  )
+}
+
 export function SidebarMain({children, className}: SidebarGenericProps) {
   return (
     <main className={cn(['', className])}>
