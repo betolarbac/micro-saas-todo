@@ -1,64 +1,63 @@
 import { cn } from "@/lib/utils"
 import Link from "next/link"
-import { Children } from "react"
 
 export type SidebarGenericProps<T = unknown> = {
-  Children: React.ReactNode
+  children: React.ReactNode
   className?: string
 } & T
 
-export function Sidebar({Children, className}: SidebarGenericProps) {
+export function Sidebar({children, className}: SidebarGenericProps) {
   return (
     <aside className={cn(['', className])}>
-      {Children}
+      {children}
     </aside>
   )
 }
 
-export function SidebarHeader({Children, className}: SidebarGenericProps) {
+export function SidebarHeader({children, className}: SidebarGenericProps) {
   return (
     <header className={cn(['', className])}>
-      {Children}
+      {children}
     </header>
   )
 }
 
-export function SidebarMain({Children, className}: SidebarGenericProps) {
+export function SidebarMain({children, className}: SidebarGenericProps) {
   return (
     <main className={cn(['', className])}>
-      {Children}
+      {children}
     </main>
   )
 }
 
-export function SidebarNav({Children, className}: SidebarGenericProps) {
+export function SidebarNav({children, className}: SidebarGenericProps) {
   return (
     <nav className={cn(['', className])}>
-      {Children}
+      {children}
     </nav>
   )
 }
 
-export function SidebarNavHeader({Children, className}: SidebarGenericProps) {
+export function SidebarNavHeader({children, className}: SidebarGenericProps) {
   return (
     <header className={cn(['', className])}>
-      {Children}
+      {children}
     </header>
   )
 }
 
-export function SidebarNavHeaderTitle({Children, className}: SidebarGenericProps) {
+export function SidebarNavHeaderTitle({children, className}: SidebarGenericProps) {
   return (
     <h4 className={cn(['', className])}>
-      {Children}
+      {children}
     </h4>
   )
 }
 
-export function SidebarNavMain({Children, className}: SidebarGenericProps) {
+export function SidebarNavMain({children, className}: SidebarGenericProps) {
   return (
     <main className={cn(['', className])}>
-      {Children}
+      {children}
     </main>
   )
 }
@@ -67,19 +66,19 @@ type SidebarNavLinkProps = {
   href: string
 }
 
-export function SidebarNavLink({Children, className, href}: SidebarGenericProps<SidebarNavLinkProps>) {
+export function SidebarNavLink({children, className, href}: SidebarGenericProps<SidebarNavLinkProps>) {
   return (
     <Link href={href} className={cn(['', className])}>
-      {Children}
+      {children}
     </Link>
   )
 }
 
 
-export function SidebarFooter({Children, className}: SidebarGenericProps) {
+export function SidebarFooter({children, className}: SidebarGenericProps) {
   return (
     <footer className={cn(['', className])}>
-      {Children}
+      {children}
     </footer>
   )
 }
