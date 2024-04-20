@@ -1,5 +1,9 @@
 import AuthPage from "./_components/auth-form";
 
 export default function Page() {
-  return <AuthPage />
+  return (
+    <main className="flex items-center justify-center h-screen">
+      <AuthPage />
+    </main>
+  )
 }
