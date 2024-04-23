@@ -1,19 +1,17 @@
-"use client";
+'use client'
 
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
+import { Button } from '@/components/ui/button'
+import { Input } from '@/components/ui/input'
 import {
   Sheet,
-  SheetClose,
   SheetContent,
   SheetDescription,
   SheetFooter,
   SheetHeader,
   SheetTitle,
   SheetTrigger,
-} from "@/components/ui/sheet";
-import { useRef } from "react";
+} from '@/components/ui/sheet'
+import { useRef } from 'react'
 import {
   Form,
   FormField,
@@ -22,9 +20,14 @@ import {
   FormControl,
   FormDescription,
   FormMessage,
-} from "@/components/ui/form";
-import { useForm } from "react-hook-form";
-import { Todo } from "../types";
+} from '@/components/ui/form'
+import { useForm } from 'react-hook-form'
+import { Todo } from '../types'
+import { upsertTodo } from '../actions'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { upsertTodoSchema } from '../schema'
+import { useRouter } from 'next/navigation'
+import { toast } from '@/components/ui/use-toast'
 
 type TodoUpsertSheetProps = {
   children?: React.ReactNode;
@@ -33,11 +36,23 @@ type TodoUpsertSheetProps = {
 
 export function TodoUpsertSheet({ children }: TodoUpsertSheetProps) {
   const ref = useRef<HTMLInputElement>(null);
+  const Router = useRouter();
 
-  const form = useForm();
+  const form = useForm({
+    resolver: zodResolver(upsertTodoSchema)
+  });
 
-  const onSubmit = form.handleSubmit((data) => {
-    console.log(data);
+  const onSubmit = form.handleSubmit(async (data) => {
+    await upsertTodo(data);
+
+    Router.refresh()
+
+    ref?.current?.click();
+
+    toast({
+      title: 'Todo created',
+      description: 'Your todo has been created',
+    })
   });
 
   return (
@@ -74,9 +89,7 @@ export function TodoUpsertSheet({ children }: TodoUpsertSheetProps) {
             />
 
             <SheetFooter>
-              <SheetClose asChild>
                 <Button type="submit">Save changes</Button>
-              </SheetClose>
             </SheetFooter>
           </form>
         </Form>
