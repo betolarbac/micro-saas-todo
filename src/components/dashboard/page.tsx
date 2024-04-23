@@ -15,7 +15,7 @@ export function DashboardPage({ children, className }: DashboardPagerGenericProp
 
 export function DashboardPageHeader({ children, className }: DashboardPagerGenericProps) {
   return (
-    <header className={cn(["px-6 py-3 border-b border-border", className])}>
+    <header className={cn(["px-6 py-3 border-b border-border flex items-center justify-between", className])}>
       {children}
     </header>
   );
