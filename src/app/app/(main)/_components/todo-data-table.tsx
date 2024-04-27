@@ -40,7 +40,6 @@ import { toast } from "@/components/ui/use-toast";
 import { useRouter } from "next/navigation";
 import { todo } from "node:test";
 
-
 type TodoDataTable = {
   data: Todo[];
 };
@@ -76,15 +75,17 @@ export function TodoDataTable({ data }: TodoDataTable) {
     });
   };
 
-const columns: ColumnDef<Todo>[] = [
+  const columns: ColumnDef<Todo>[] = [
     {
       accessorKey: "status",
       header: "Status",
       cell: ({ row }) => {
         const { doneAt } = row.original;
         const status: "done" | "waiting" = doneAt ? "done" : "waiting";
-        const Variant: "outline" | "secondary" = doneAt ? "outline" : "secondary";
-  
+        const Variant: "outline" | "secondary" = doneAt
+          ? "outline"
+          : "secondary";
+
         return <Badge variant={Variant}>{status}</Badge>;
       },
     },
@@ -119,7 +120,7 @@ const columns: ColumnDef<Todo>[] = [
       enableHiding: false,
       cell: ({ row }) => {
         const todo = row.original;
-  
+
         return (
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
@@ -136,8 +137,18 @@ const columns: ColumnDef<Todo>[] = [
                 Copy todo ID
               </DropdownMenuItem>
               <DropdownMenuSeparator />
-              <DropdownMenuItem onClick={() => handleToggleDoneTodo(todo)}>Mark as done</DropdownMenuItem>
-              <DropdownMenuItem onClick={() => handleDeleteTodo(todo)}>Delete</DropdownMenuItem>
+              <DropdownMenuItem
+                className={`cursor-pointer  ${todo.doneAt ? "text-muted-foreground" : ""}`}
+                onClick={() => handleToggleDoneTodo(todo)}
+              >
+                Mark as done
+              </DropdownMenuItem>
+              <DropdownMenuItem
+                className="cursor-pointer"
+                onClick={() => handleDeleteTodo(todo)}
+              >
+                Delete
+              </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
         );
@@ -163,7 +174,6 @@ const columns: ColumnDef<Todo>[] = [
       rowSelection,
     },
   });
-  
 
   return (
     <div className="w-full">
