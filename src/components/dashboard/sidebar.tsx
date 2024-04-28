@@ -77,7 +77,7 @@ type DashboardSidebarNavLinkProps = {
 
 export function DashboardSidebarNavLink({children, className, href, active}: DashboardSidebarGenericProps<DashboardSidebarNavLinkProps>) {
   return (
-    <Link href={href} className={cn(['flex items-center text-xs px-3 py-2 rounded-md', active && 'bg-secondary', className])}>
+    <Link href={href} className={cn(['flex items-center text-xs px-3 py-2 rounded-md font-medium', active && 'bg-secondary', className])}>
       {children}
     </Link>
   )

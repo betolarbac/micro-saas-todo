@@ -4,16 +4,22 @@ import {
   DashboardPageHeaderTitle,
   DashboardPageMain,
 } from "@/components/dashboard/page";
-import { auth } from "@/services/auth";
 
-export default function Page() {
+import { PropsWithChildren } from "react";
+import { SettingsSIdebar } from "./_components/settings-sidebar";
+
+export default function layout({ children }: PropsWithChildren) {
+
   return (
     <DashboardPage>
       <DashboardPageHeader>
         <DashboardPageHeaderTitle>Configurações</DashboardPageHeaderTitle>
       </DashboardPageHeader>
       <DashboardPageMain>
-        <h1>Configurações</h1>
+        <div className="grid grid-cols-[16rem_1fr] gap-12">
+            <SettingsSIdebar />
+          <div>{children}</div>
+        </div>
       </DashboardPageMain>
     </DashboardPage>
   );
