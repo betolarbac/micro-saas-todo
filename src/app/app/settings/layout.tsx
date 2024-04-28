@@ -9,16 +9,17 @@ import { PropsWithChildren } from "react";
 import { SettingsSIdebar } from "./_components/settings-sidebar";
 
 export default function layout({ children }: PropsWithChildren) {
-
   return (
     <DashboardPage>
       <DashboardPageHeader>
         <DashboardPageHeaderTitle>Configurações</DashboardPageHeaderTitle>
       </DashboardPageHeader>
       <DashboardPageMain>
-        <div className="grid grid-cols-[16rem_1fr] gap-12">
+        <div className="container max-w-screen-lg">
+          <div className="grid grid-cols-[16rem_1fr] gap-12">
             <SettingsSIdebar />
-          <div>{children}</div>
+            <div>{children}</div>
+          </div>
         </div>
       </DashboardPageMain>
     </DashboardPage>

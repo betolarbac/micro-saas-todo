@@ -1,6 +1,10 @@
+import { auth } from "@/services/auth";
+import { ProfileForm } from "./_components/form";
 
-export default function Page() {
+export default async function Page() {
+  const session = await auth();
+
   return (
-        <h1>Configurações</h1>
+      <ProfileForm defaultValues={session?.user}/>
   );
 }
