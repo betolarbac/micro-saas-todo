@@ -42,8 +42,8 @@ export function ProfileForm({ defaultValues }: ProfileFormProps) {
     router.refresh();
 
     toast({
-      title: "Profile updated",
-      description: "Your profile has been updated",
+      title: "Perfil atualizado",
+      description: "Seus dados de perfil foram atualizados",
     });
   });
 
@@ -55,12 +55,12 @@ export function ProfileForm({ defaultValues }: ProfileFormProps) {
           name="name"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Name</FormLabel>
+              <FormLabel>Nome</FormLabel>
               <FormControl>
-                <Input placeholder="Enter your name" {...field} />
+                <Input placeholder="Digite seu nome" {...field} />
               </FormControl>
               <FormDescription>
-                This is how your name will appear on your profile.
+                Este é como você aparecerá em seu perfil.
               </FormDescription>
               <FormMessage />
             </FormItem>
@@ -74,10 +74,10 @@ export function ProfileForm({ defaultValues }: ProfileFormProps) {
             <FormItem>
               <FormLabel>Email</FormLabel>
               <FormControl>
-                <Input placeholder="Enter your email" readOnly {...field} />
+                <Input placeholder="Digite seu email" readOnly {...field} />
               </FormControl>
               <FormDescription>
-                This is the contact email contato@email.com to change the email.
+                Este é o email de contato para alterar o email.
               </FormDescription>
               <FormMessage />
             </FormItem>
@@ -86,10 +86,11 @@ export function ProfileForm({ defaultValues }: ProfileFormProps) {
 
         <SheetFooter>
           <Button disabled={form.formState.isSubmitting} type="submit">
-            {form.formState.isSubmitting ? "Saving..." : "Save changes"}  
+            {form.formState.isSubmitting ? "Salvando..." : "Salvar alterações"} 
           </Button>
         </SheetFooter>
       </form>
     </Form>
   );
 }
+
