@@ -20,6 +20,14 @@ import { SheetFooter } from "@/components/ui/sheet";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Session } from "next-auth";
+import {
+  Card,
+  CardHeader,
+  CardTitle,
+  CardDescription,
+  CardContent,
+  CardFooter,
+} from "@/components/ui/card";
 
 type ProfileFormProps = {
   defaultValues: Session["user"];
@@ -54,16 +62,39 @@ export function ProfileForm({ defaultValues }: ProfileFormProps) {
           control={form.control}
           name="name"
           render={({ field }) => (
-            <FormItem>
-              <FormLabel>Nome</FormLabel>
-              <FormControl>
-                <Input placeholder="Digite seu nome" {...field} />
-              </FormControl>
-              <FormDescription>
-                Este é como você aparecerá em seu perfil.
-              </FormDescription>
-              <FormMessage />
-            </FormItem>
+            <>
+              <Card>
+                <CardHeader className="border-b border-border">
+                  <CardTitle>Nome</CardTitle>
+                </CardHeader>
+                <CardContent className="pt-6">
+                  <div className="space-y-2">
+                    <FormItem>
+                      <CardDescription>
+                        Este é o nome como você aparecerá em seu perfil.
+                      </CardDescription>
+                      <FormControl>
+                        <Input placeholder="Digite seu nome" {...field} />
+                      </FormControl>
+
+                      <FormMessage />
+                    </FormItem>
+                  </div>
+                </CardContent>
+                <CardFooter className="flex items-center justify-between border-t border-border pt-6">
+                  <SheetFooter>
+                    <Button
+                      disabled={form.formState.isSubmitting}
+                      type="submit"
+                    >
+                      {form.formState.isSubmitting
+                        ? "Salvando..."
+                        : "Salvar alterações"}
+                    </Button>
+                  </SheetFooter>
+                </CardFooter>
+              </Card>
+            </>
           )}
         />
 
@@ -71,26 +102,31 @@ export function ProfileForm({ defaultValues }: ProfileFormProps) {
           control={form.control}
           name="email"
           render={({ field }) => (
-            <FormItem>
-              <FormLabel>Email</FormLabel>
-              <FormControl>
-                <Input placeholder="Digite seu email" readOnly {...field} />
-              </FormControl>
-              <FormDescription>
-                Este é o email de contato para alterar o email.
-              </FormDescription>
-              <FormMessage />
-            </FormItem>
+            <Card>
+              <CardHeader className="border-b border-border">
+                <CardTitle>Email</CardTitle>
+              </CardHeader>
+              <CardContent className="pt-6">
+                <div className="space-y-2">
+                  <FormItem>
+                    <CardDescription>
+                      Para mudar seu email entre em contato com suporte@email.com
+                    </CardDescription>
+                    <FormControl>
+                      <Input
+                        placeholder="Digite seu email"
+                        disabled
+                        {...field}
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                </div>
+              </CardContent>
+            </Card>
           )}
         />
-
-        <SheetFooter>
-          <Button disabled={form.formState.isSubmitting} type="submit">
-            {form.formState.isSubmitting ? "Salvando..." : "Salvar alterações"} 
-          </Button>
-        </SheetFooter>
       </form>
     </Form>
   );
 }
-
