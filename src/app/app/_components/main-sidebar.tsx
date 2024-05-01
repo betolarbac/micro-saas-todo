@@ -42,7 +42,7 @@ export function MainSidebar({user}: MainSidebarProps) {
               <HomeIcon className="w-3 h-3 mr-3" />
               Tarefas
               </DashboardSidebarNavLink>
-            <DashboardSidebarNavLink href="/app/settings" active={isActive('/app/settings')}>
+            <DashboardSidebarNavLink href="/app/settings" active={pathname.startsWith('/app/settings')}>
               <MixerVerticalIcon className="w-3 h-3 mr-3" />
               Configurações
               </DashboardSidebarNavLink>
