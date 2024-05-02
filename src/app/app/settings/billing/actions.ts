@@ -17,6 +17,7 @@ export async function createCheckoutSessionAction() {
   const checkoutSession = await createCheckoutSession(
     session?.user?.id as string,
     session?.user?.email as string,
+    session.user.stripeSubscriptionID as string,
   );
 
   if (!checkoutSession.url) return 
