@@ -39,7 +39,7 @@ export function UserDropdown({ user }: UserDropdownProps) {
         >
           <Avatar className="h-8 w-8">
             <AvatarImage src={user.image as string} alt={user.name as string} />
-            <AvatarFallback className="uppercase">{user.email?.charAt(0)}</AvatarFallback>
+            <AvatarFallback className="uppercase">{user?.name ? user.name.charAt(0) : user.email?.charAt(0)}</AvatarFallback>
           </Avatar>
 
           <div className="flex flex-col flex-1 space-y-1 text-left">
@@ -52,7 +52,8 @@ export function UserDropdown({ user }: UserDropdownProps) {
           </div>
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent className="w-56" align="end" forceMount>
+
+      <DropdownMenuContent className="w-56" align="start" forceMount>
         <DropdownMenuLabel className="font-normal">
           <div className="flex flex-col space-y-1">
             <p className="text-sm font-medium leading-none">{user.name}</p>
