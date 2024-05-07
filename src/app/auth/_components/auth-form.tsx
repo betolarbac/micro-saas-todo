@@ -6,9 +6,11 @@ import { Button } from "@/components/ui/button"
 import { useForm } from "react-hook-form"
 import { signIn } from "next-auth/react"
 import { toast } from "@/components/ui/use-toast"
+import { useRouter } from "next/navigation"
 
 export default function AuthPage() {
   const form = useForm()
+  const router = useRouter()
 
   const handleSubmit = form.handleSubmit(async (data) => {
 
@@ -19,6 +21,8 @@ export default function AuthPage() {
         title: 'Magic Link Send',
         description: 'Check your email'
       })
+      router.push('/auth/magic-link-sent')
+
     } catch (error) {
       toast({
         title: 'Error',
@@ -29,9 +33,9 @@ export default function AuthPage() {
 
 
   return (
-    <div className="mx-auto max-w-sm space-y-8">
+    <div className="mx-auto max-w-sm space-y-8 border border-border p-8">
         <div className="space-y-2 text-center">
-          <h1 className="text-3xl font-bold">login</h1>
+          <h1 className="text-3xl font-bold">Login</h1>
           <p className="text-gray-500 dark:text-gray-400">Enter your email to receive a magic link</p>
         </div>
         <form onSubmit={handleSubmit} className="space-y-4">
