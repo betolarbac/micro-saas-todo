@@ -74,7 +74,7 @@ export function ProfileForm({ defaultValues }: ProfileFormProps) {
                         Este é o nome como você aparecerá em seu perfil.
                       </CardDescription>
                       <FormControl>
-                        <Input placeholder="Digite seu nome" {...field} />
+                        <Input placeholder="Digite seu nome" {...field} required />
                       </FormControl>
 
                       <FormMessage />
